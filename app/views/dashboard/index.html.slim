@@ -1,0 +1,38 @@
+- if user_signed_in?
+  = form_tag week_path(@week), method: :patch do
+    .row
+      .input-field.col.s12.m6
+        .row
+          .input-field.col.s12.red-text
+            ' Total Spent: 
+            = @week.budget
+          .input-field.col.s12.green-text.text-darken-2
+            ' Meals:
+            = @week.meals
+      .input-field.col.s8.m4
+        = number_field_tag :budget
+        = label :budget, 'Add Budget'
+      .input-field.col.s4.m2
+        = submit_tag 'Add', class: 'btn red'
+
+
+
+  .row
+    .center
+
+      = link_to week_path(@week, meals: true), method: :patch, class: 'eat-btn btn-large waves-effect waves-light green' do
+        i.fa.fa-cutlery
+
+  .row
+    .center.title.green-text.text-lighten-2.col.s12
+      | Average Per Meal This week!
+    .center.value.green-text.col.s12
+      ' $
+      = @week.average
+
+- else
+  .main-btns
+    .row.center
+      = link_to ' Login ', new_user_session_path, class: 'btn green'
+    .row.center
+      = link_to 'Sign Up', new_user_registration_path, class: 'btn green'
