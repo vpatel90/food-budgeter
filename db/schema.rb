@@ -34,12 +34,12 @@ ActiveRecord::Schema.define(version: 20170104004333) do
 
   create_table "weeks", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "meals"
-    t.float    "budget"
+    t.integer  "meals",      default: 0
+    t.float    "budget",     default: 0.0
     t.datetime "start"
     t.datetime "end"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.index ["user_id"], name: "index_weeks_on_user_id", using: :btree
   end
 

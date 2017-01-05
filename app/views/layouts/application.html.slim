@@ -11,12 +11,13 @@ html
   body
     nav.green
       .nav-wrapper
-        a.brand-logo href="#"
+        = link_to root_path, class:'brand-logo' do 
           i.fa.fa-cutlery
           ' Fooo
         ul.right
           - if user_signed_in?
             li
-              = link_to 'Logout', destroy_user_session_path, method: :delete
+              = link_to destroy_user_session_path, method: :delete do
+                i.fa.fa-sign-out
     .container
       = yield
