@@ -1,0 +1,24 @@
+.eat-btn {
+  border-radius: 50%;
+  height: 12rem;
+  width: 12rem;
+  position: relative;
+
+  .fa {
+    position: absolute;
+    left: 0;
+    right: 0;
+    font-size: 3.8em;
+    line-height: 3em;
+    vertical-align: middle;
+  }
+}
+
+.title {
+  font-size: 1.2em;
+}
+
+.value {
+  font-size: 5em;
+}
+

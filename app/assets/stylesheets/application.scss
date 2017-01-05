@@ -17,42 +17,9 @@
 @import "materialize";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "nav";
+@import "dashboard";
 
 .main-btns {
   margin-top: 2rem;
-}
-
-.eat-btn {
-  border-radius: 50%;
-  height: 12rem;
-  width: 12rem;
-  position: relative;
-
-  .fa {
-    position: absolute;
-    left: 0;
-    right: 0;
-    font-size: 3.8em;
-    line-height: 3em;
-    vertical-align: middle;
-  }
-}
-
-.title {
-  font-size: 1.2em;
-}
-
-.value {
-  font-size: 5em;
-}
-
-.fa.fa-cutlery {
-  float: none;
-}
-
-.nav-wrapper {
-  .fa-sign-out {
-    font-size: 2em;
-    line-height: 2em;
-  }
 }
