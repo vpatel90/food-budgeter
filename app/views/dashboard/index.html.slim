@@ -3,10 +3,10 @@
     .row
       .input-field.col.s12.m6
         .row
-          .input-field.col.s12.red-text
+          .input-field.col.s6.red-text
             ' Total Spent: 
             = @week.budget
-          .input-field.col.s12.green-text.text-darken-2
+          .input-field.col.s6.green-text.text-darken-2
             ' Meals:
             = @week.meals
       .input-field.col.s8.m4
@@ -14,8 +14,6 @@
         = label :budget, 'Add Budget'
       .input-field.col.s4.m2
         = submit_tag 'Add', class: 'btn red'
-
-
 
   .row
     .center
@@ -29,6 +27,13 @@
     .center.value.green-text.col.s12
       ' $
       = @week.average
+
+    .center.col.s12.green-text.text-lighten-2
+      - hypothetical_spent = @week.meals * 10
+      | At an average of $10 per meal, you would've spent $
+      = hypothetical_spent
+    .center.col.s12.title class="#{@week.saved_money?(hypothetical_spent) ? 'green-text' : 'red-text'}"
+      = @week.savings_message(hypothetical_spent)
 
 - else
   .main-btns
