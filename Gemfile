@@ -22,6 +22,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'slim-rails'
 gem 'materialize-sass'
 gem 'font-awesome-sass'
+gem 'react-rails'
 
 # vendors
 gem 'devise', '~> 4.2.0'
