@@ -1,12 +1,12 @@
 - if user_signed_in?
-  = form_tag week_path(@week), method: :patch do
+  = form_tag week_path(@week), class: 'top-panel', method: :patch do
     .row
       .input-field.col.s12.m6
         .row
           .input-field.col.s6.red-text
-            ' Total Spent: 
+            ' Total Spent: $ 
             = @week.budget
-          .input-field.col.s6.green-text.text-darken-2
+          .input-field.col.s6.green-text.text-darken-2.right-align
             ' Meals:
             = @week.meals
       .input-field.col.s8.m4
@@ -15,13 +15,11 @@
       .input-field.col.s4.m2
         = submit_tag 'Add', class: 'btn red'
 
-  .row
-    .center
-
+  .row.center.middle-panel
       = link_to week_path(@week, meals: true), method: :patch, class: 'eat-btn btn-large waves-effect waves-light green' do
         i.fa.fa-cutlery
 
-  .row
+  .row.bottom-panel
     .center.title.green-text.text-lighten-2.col.s12
       | Average Per Meal This week!
     .center.value.green-text.col.s12
