@@ -10,6 +10,7 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
     nav.green
+      = render 'hamburgermenu'
       .nav-wrapper
         = link_to root_path, class:'brand-logo' do 
           i.fa.fa-cutlery
