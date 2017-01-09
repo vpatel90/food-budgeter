@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  week: one
+  groceries: 1.5
+  restaurant: 1.5
+
+two:
+  week: two
+  groceries: 1.5
+  restaurant: 1.5

@@ -1,12 +1,13 @@
 class Week < ApplicationRecord
   
   belongs_to :user
+  has_one :expenditure
 
-  def add_budget(spending)
-    self.budget += spending.to_f
-    save
+  after_create :create_expenditure
+
+  def total_expenditure
+    expenditure.groceries + expenditure.restaurants
   end
-
 
   def add_meal
     self.meals += 1
@@ -14,16 +15,16 @@ class Week < ApplicationRecord
   end
 
   def average
-    average = budget / meals
+    average = total_expenditure / meals
     average.round(2)
   end
 
   def saved_money?(hypothetical_spent)
-    hypothetical_spent - budget > 0 ? true : false
+    hypothetical_spent - total_expenditure > 0 ? true : false
   end
 
   def savings_message(hypothetical_spent)
-    difference = hypothetical_spent - budget
+    difference = hypothetical_spent - total_expenditure
 
     if difference > 0
       "You've saved $#{difference}"
