@@ -8,9 +8,10 @@ html
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"
+
   body
     nav.green
-      = render 'hamburgermenu'
       .nav-wrapper
         = link_to root_path, class:'brand-logo' do 
           i.fa.fa-cutlery
@@ -20,6 +21,9 @@ html
             li
               = link_to destroy_user_session_path, method: :delete do
                 i.fa.fa-sign-out
+        = render 'shared/hamburgermenu'
+      
+
     .container
       = yield
-    = render 'footer'
+    = render 'shared/footer'
