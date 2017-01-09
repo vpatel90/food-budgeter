@@ -23,6 +23,7 @@ gem 'slim-rails'
 gem 'materialize-sass'
 gem 'font-awesome-sass'
 gem 'react-rails'
+gem 'rails_admin', '~> 1.0'
 
 # vendors
 gem 'devise', '~> 4.2.0'
