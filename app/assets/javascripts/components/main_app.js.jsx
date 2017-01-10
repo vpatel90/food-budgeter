@@ -24,11 +24,21 @@ var MainApp = React.createClass({
           groceries: data.expenditure.groceries,
           restaurants: data.expenditure.restaurants
         });
-      }.bind(this),
-      error: function(d) {
-        console.log(d);
-      }
+      }.bind(this)
     });
+  },
+
+  updateMeal: function () {
+      $.ajax({
+      url: '/weeks/' + this.props.week.id,
+      data: {},
+      type: 'PUT',
+      success: function(data) {
+        this.setState({
+          meals: data.week.meals
+        });
+      }.bind(this)
+    });  
   },
 
   updateCurrentDisplay: function ( newDisplay ) {
@@ -47,6 +57,9 @@ var MainApp = React.createClass({
           groceries={this.state.groceries}
           restaurants={this.state.restaurants}
           meals={this.state.meals}
+        />
+        <MidPanel
+          updateMeal={this.updateMeal}
         />
       </div>
     );

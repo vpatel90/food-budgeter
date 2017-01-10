@@ -3,10 +3,8 @@ class WeeksController < ApplicationController
   before_action :load_week
 
   def update
-    if params[:meals]
-      @week.add_meal
-    end
-    redirect_to :back
+    @week.add_meal
+    render json: { week: @week }
   end
 
 protected

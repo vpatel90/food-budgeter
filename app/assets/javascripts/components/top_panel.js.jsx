@@ -36,13 +36,13 @@ var TopPanel = React.createClass({
             Total Spent: $ {this.state.totalSpent.toFixed(2)}
           </div>
           <div className='col right green-text text-darken-2'>
-            Meals: {this.props.meals}
+            Meals: {this.state.meals}
           </div>
         </div>
         <div>
           <div className='input-field form-input'>
             <input onChange={this.updateValue} type='number' step='any' name='expenditure' value={this.state.value} />
-            <label htmlFor='expenditure'>{'Add ' + this.props.currentDisplay + ' spending'} </label>
+            <label htmlFor='expenditure'>{'Add ' + this.state.currentDisplay + ' spending'} </label>
           </div>
           <div className='submit-btn btn red' onClick={this.submitForm}>
             Add
