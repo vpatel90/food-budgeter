@@ -1,0 +1,22 @@
+#signup-modal.modal
+  .modal-content
+    h2 Sign up
+
+    = form_tag user_registration_path, method: :POST do |f| 
+      .field
+        = label_tag :email
+        br
+        = email_field_tag :email, nil, autofocus: true
+
+      .field
+        = label_tag :password
+        br
+        = password_field_tag :password, autocomplete: "off"
+
+      .field
+        = label_tag :password_confirmation 
+        br
+        = password_field_tag :password_confirmation, autocomplete: "off"
+
+      .actions
+        = submit_tag "Sign up"
