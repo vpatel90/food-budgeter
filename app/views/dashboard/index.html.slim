@@ -1,5 +1,10 @@
 - if user_signed_in?
-  = form_tag expenditure_path(@week.expenditure), class: 'top-panel', method: :patch do
+  = react_component \
+    'MainApp',
+    week: @week,
+    expenditure: @week.expenditure
+
+  = form_tag expenditure_path(@week.expenditure), class: '', method: :patch do
     .row
       .input-field.col.s12.m6
         .row
