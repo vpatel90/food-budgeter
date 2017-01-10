@@ -4,24 +4,6 @@
     week: @week,
     expenditure: @week.expenditure
 
-  .row.center.middle-panel
-      = link_to week_path(@week, meals: true), method: :patch, class: 'eat-btn btn-large waves-effect waves-light green' do
-        i.fa.fa-cutlery
-
-  .row.bottom-panel
-    .center.title.green-text.text-lighten-2.col.s12
-      | Average Per Meal This week!
-    .center.value.green-text.col.s12
-      ' $
-      = @week.average
-
-    .center.col.s12.green-text.text-lighten-2
-      - hypothetical_spent = @week.meals * 10
-      | At an average of $10 per meal, you would've spent $
-      = hypothetical_spent
-    .center.col.s12.title class="#{@week.saved_money?(hypothetical_spent) ? 'green-text' : 'red-text'}"
-      = @week.savings_message(hypothetical_spent)
-
 - else
   .main-btns
     .row.center
