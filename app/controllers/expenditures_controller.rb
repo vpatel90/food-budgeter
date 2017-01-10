@@ -3,12 +3,8 @@ class ExpendituresController < ApplicationController
   before_action :load_expenditure
 
   def update
-    if params[:groceries]
-      @expenditure.add_to_groceries(params[:groceries])
-    elsif params[:resturants]
-      @expenditure.add_to_resturants(params[:resturants])
-    end
-    redirect_to :back
+    @expenditure.send("add_to_#{params[:expenditure][:type]}", params[:expenditure][:amount])
+    render json: { week: @expenditure.week, expenditure: @expenditure }
   end
 
 protected
