@@ -26,21 +26,19 @@ var BottomPanel = React.createClass({
     });
   },
 
+  difference: function() {
+    return Math.abs(this.state.hypothetical - this.state.totalSpent).toFixed(2);
+  },
+
   savingMessage: function () {
     savingMoney = this.state.totalSpent <= this.state.hypothetical
 
-    if (savingMoney)
-      return (
-        <div className='green-text'>
-          You saved $ {(this.state.hypothetical - this.state.totalSpent).toFixed(2)}
-        </div>
-      );
-    else
-      return (
-        <div className='red-text'>
-          You overspent $ {(this.state.totalSpent - this.state.hypothetical).toFixed(2)}
-        </div>
-      );
+
+    return (
+      <div className={savingMoney ? 'green-text' : 'red-text'}>
+        {savingMoney ? 'You saved' : 'You overspent'} $ {this.difference()}
+      </div>
+    );
   },
 
   render: function() {
