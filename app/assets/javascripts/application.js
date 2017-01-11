@@ -20,4 +20,7 @@
 //= require_tree .
 $(function(){
   $(".button-collapse").sideNav();
+  $('.modal').modal();
+  $('.modal-trigger').modal('open');
+  $('.modal-trigger').modal('close');
 });

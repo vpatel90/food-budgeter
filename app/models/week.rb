@@ -1,5 +1,5 @@
 class Week < ApplicationRecord
-  
+
   belongs_to :user
   has_one :expenditure
 
@@ -16,7 +16,7 @@ class Week < ApplicationRecord
 
   def average
     average = total_expenditure / meals
-    average.nan? ? 0 : average.round(2)
+    average.nan? || average.infinite? ? 0 : average.round(2)
   end
 
   def saved_money?(hypothetical_spent)

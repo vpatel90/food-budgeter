@@ -1,0 +1,15 @@
+#login-modal.modal
+  .modal-content
+    h4 Log in
+
+    = form_for User.new, url: user_session_path, method: :POST do |f| 
+      .input-field
+        = f.email_field :email, autofocus: true 
+        = f.label :email
+          
+      .input-field
+        = f.password_field :password, autocomplete: "off"
+        = f.label :password
+
+      .actions
+        = submit_tag "Log in"
