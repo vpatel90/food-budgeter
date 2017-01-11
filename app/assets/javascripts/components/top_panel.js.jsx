@@ -32,10 +32,16 @@ var TopPanel = React.createClass({
     return (
       <div className='top-panel'>
         <div className='row input-field'>
-          <div className='col red-text'>
+          <div className={'col ' + this.state.currentDisplay + '-text'}>
+            Total {this.state.currentDisplay}: $ {(this.state.currentDisplay == 'groceries' ? this.props.groceries : this.props.restaurants).toFixed(2)}
+          </div>
+
+        </div>
+        <div className='row input-field'>
+          <div className='col deep-orange-text'>
             Total Spent: $ {this.state.totalSpent.toFixed(2)}
           </div>
-          <div className='col right green-text text-darken-2'>
+          <div className={'col right '+ this.state.currentDisplay + '-text text-darken-2'}>
             Meals: {this.state.meals}
           </div>
         </div>
@@ -44,7 +50,7 @@ var TopPanel = React.createClass({
             <input onChange={this.updateValue} type='number' step='any' name='expenditure' value={this.state.value} />
             <label htmlFor='expenditure'>{'Add ' + this.state.currentDisplay + ' spending'} </label>
           </div>
-          <div className='submit-btn btn red' onClick={this.submitForm}>
+          <div className='submit-btn btn deep-orange' onClick={this.submitForm}>
             Add
           </div>
         </div>

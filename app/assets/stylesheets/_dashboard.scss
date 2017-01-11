@@ -15,10 +15,46 @@
 }
 
 .middle-panel {
+  min-height: 25vh;
   max-height: 25vh;
-  .eat-btn {
+  position: relative;
+
+  .main-btn, .sub-btn, .fa.fa-cutlery, .fa.fa-shopping-basket {
+    transform: inherit;
+
+    transition: all 0.5s, ease;
+
+  }
+  .sub-btn.restaurants-btn { right: 2rem; }
+  .sub-btn.groceries-btn { left: 2rem; }
+  .groceries-btn { @extend .green; }
+  .restaurants-btn { @extend .light-blue; }
+
+  .sub-btn {
+    opacity: 0.7;
+    position: absolute;
     border-radius: 50%;
-    position: relative;
+    min-height: 8vh;
+    max-height: 8vh;
+    min-width: 8vh;
+    max-width: 8vh;
+    padding: 0;
+    bottom: 0;
+    .fa {
+      position: absolute;
+      left: 0;
+      right: 0;
+      vertical-align: middle;
+      font-size: 2.5vh;
+      line-height: 8vh;
+    }
+  }
+  .main-btn {
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
     min-height: 25vh;
     min-width: 25vh;
     max-height: 25vh;
@@ -42,3 +78,8 @@
 .title { font-size: 1.2em; }
 
 .value { font-size: 5em; }
+
+.groceries-text { @extend .green-text; }
+.restaurants-text { @extend .light-blue-text; }
+
+.groceries-text, .restaurants-text { transition: all 0.5s, ease; }
