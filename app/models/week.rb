@@ -16,7 +16,7 @@ class Week < ApplicationRecord
 
   def average
     average = total_expenditure / meals
-    average.round(2)
+    average.nan? ? 0 : average.round(2)
   end
 
   def saved_money?(hypothetical_spent)
