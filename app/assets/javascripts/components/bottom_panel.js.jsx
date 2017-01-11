@@ -6,15 +6,8 @@ var BottomPanel = React.createClass({
       totalSpent: this.props.groceries + this.props.restaurants,
       meals: this.props.meals,
       compareTo: 10.00,
-      hypothetical: 10.00 * this.props.meals,
-      savingMoney: true
+      hypothetical: 10.00 * this.props.meals
     }
-  },
-
-  componentWillMount: function () {
-    this.setState({
-      savingMoney: this.state.totalSpent <= this.state.hypothetical
-    });
   },
 
   componentWillReceiveProps: function (nextProps) {
