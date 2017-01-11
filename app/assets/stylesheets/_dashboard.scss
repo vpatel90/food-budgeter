@@ -1,6 +1,17 @@
 .top-panel {
   max-height: 25vh;
   .row { margin-bottom: 0; }
+
+  .form-input {
+    display: inline-block;
+    width: 64%;
+  }
+  .submit-btn {
+    display: inline-block;
+    width:30%;
+    max-width: 80px;
+    margin-left: 2rem;
+  }
 }
 
 .middle-panel {

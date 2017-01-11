@@ -35,4 +35,8 @@ class Week < ApplicationRecord
     end
   end
 
+  def as_json(_ = nil)
+    super(methods: [:average])
+  end
+
 end
