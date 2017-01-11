@@ -1,17 +1,15 @@
 #login-modal.modal
   .modal-content
-    h2 Log in
+    h4 Log in
 
-    = form_tag user_session_path, method: :POST do |f| 
-      .field
-        = label_tag :email
-        br
-        = email_field_tag :email, nil, autofocus: true 
-
-      .field
-        = label_tag :password
-        br
-        = password_field_tag :password, autocomplete: "off"
+    = form_for User.new, url: user_session_path, method: :POST do |f| 
+      .input-field
+        = f.email_field :email, autofocus: true 
+        = f.label :email
+          
+      .input-field
+        = f.password_field :password, autocomplete: "off"
+        = f.label :password
 
       .actions
         = submit_tag "Log in"
