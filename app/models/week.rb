@@ -2,7 +2,7 @@ class Week < ApplicationRecord
 
   belongs_to :user
   has_one :expenditure
-  has_many :meals
+  # has_many :meals
 
   after_create :create_expenditure
 
