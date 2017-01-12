@@ -1,7 +1,7 @@
 var MainApp = React.createClass({
   getInitialState: function () {
     return {
-      meals: this.props.week.meals,
+      meals: this.props.week.total_meals,
       groceries: this.props.expenditure.groceries,
       restaurants: this.props.expenditure.restaurants,
       currentDisplay: 'groceries',
@@ -22,7 +22,7 @@ var MainApp = React.createClass({
       type: 'PUT',
       success: function(data) {
         this.setState({
-          meals: data.week.meals,
+          meals: data.week.total_meals,
           groceries: data.expenditure.groceries,
           restaurants: data.expenditure.restaurants,
           average: data.week.average

@@ -10,13 +10,16 @@ class Week < ApplicationRecord
     expenditure.groceries + expenditure.restaurants
   end
 
-  def add_meal
-    self.meals += 1
-    save
+  def total_meals
+    meals.count
+  end
+
+  def add_meal(manner, free = false)
+    meals.create(manner: manner, free: free)
   end
 
   def average
-    average = total_expenditure / meals
+    average = total_expenditure / total_meals
     average.nan? || average.infinite? ? 0 : average.round(2)
   end
 
@@ -37,7 +40,7 @@ class Week < ApplicationRecord
   end
 
   def as_json(_ = nil)
-    super(methods: [:average])
+    super(methods: [:average, :total_meals])
   end
 
 end
