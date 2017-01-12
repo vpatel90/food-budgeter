@@ -1,7 +1,7 @@
 var MainApp = React.createClass({
   getInitialState: function () {
     return {
-      meals: this.props.week.meals,
+      meals: this.props.week.total_meals,
       groceries: this.props.expenditure.groceries,
       restaurants: this.props.expenditure.restaurants,
       currentDisplay: 'groceries',
@@ -10,7 +10,7 @@ var MainApp = React.createClass({
     }
   },
 
-  updateExpenditure: function ( amount, type ) {
+  updateExpenditure: function (amount, type) {
     $.ajax({
       url: '/expenditures/' + this.props.expenditure.id,
       data: {
@@ -20,9 +20,9 @@ var MainApp = React.createClass({
         }
       },
       type: 'PUT',
-      success: function(data) {
+      success: function (data) {
         this.setState({
-          meals: data.week.meals,
+          meals: data.week.total_meals,
           groceries: data.expenditure.groceries,
           restaurants: data.expenditure.restaurants,
           average: data.week.average
@@ -31,14 +31,16 @@ var MainApp = React.createClass({
     });
   },
 
-  updateMeal: function () {
+  updateMeal: function (manner) {
       $.ajax({
       url: '/weeks/' + this.props.week.id,
-      data: {},
+      data: {
+        manner: manner
+      },
       type: 'PUT',
       success: function(data) {
         this.setState({
-          meals: data.week.meals,
+          meals: data.week.total_meals,
           average: data.week.average
         });
       }.bind(this)
