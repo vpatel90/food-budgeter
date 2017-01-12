@@ -6,7 +6,8 @@ var BottomPanel = React.createClass({
       totalSpent: this.props.groceries + this.props.restaurants,
       meals: this.props.meals,
       compareTo: 10.00,
-      hypothetical: 10.00 * this.props.meals
+      hypothetical: 10.00 * this.props.meals,
+      currentDisplay: this.props.currentDisplay
     }
   },
 
@@ -15,7 +16,8 @@ var BottomPanel = React.createClass({
       average: nextProps.average.toFixed(2),
       totalSpent: nextProps.groceries + nextProps.restaurants,
       meals: nextProps.meals,
-      hypothetical: 10.00 * nextProps.meals
+      hypothetical: 10.00 * nextProps.meals,
+      currentDisplay: nextProps.currentDisplay
     });
   },
 
@@ -28,7 +30,7 @@ var BottomPanel = React.createClass({
 
 
     return (
-      <div className={savingMoney ? 'green-text' : 'red-text'}>
+      <div className={savingMoney ? (this.state.currentDisplay + '-text') : 'deep-orange-text'}>
         {savingMoney ? 'You saved' : 'You overspent'} $ {this.difference()}
       </div>
     );
@@ -37,14 +39,14 @@ var BottomPanel = React.createClass({
   render: function() {
     return (
       <div className='row bottom-panel'>
-        <div className='center title green-text text-lighten-2 col.s12'>
+        <div className={'center title ' + this.state.currentDisplay + '-text text-lighten-2 col.s12'}>
           Average per meal this week
         </div>
-        <div className='center value green-text col s12'>
+        <div className={'center value ' + this.state.currentDisplay + '-text col s12'}>
           $ {this.state.average}
         </div>
 
-        <div className='center col s12 green-text text-lighten-2'>
+        <div className={'center col s12 ' + this.state.currentDisplay + '-text text-lighten-2'}>
           At an average of $ 10 per meal, 
           <div> you would have spent $ {this.state.hypothetical}</div>
         </div>

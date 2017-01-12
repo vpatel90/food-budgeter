@@ -5,6 +5,7 @@ var MainApp = React.createClass({
       groceries: this.props.expenditure.groceries,
       restaurants: this.props.expenditure.restaurants,
       currentDisplay: 'groceries',
+      currentSub: 'restaurants',
       average: this.props.week.average
     }
   },
@@ -44,9 +45,10 @@ var MainApp = React.createClass({
     });  
   },
 
-  updateCurrentDisplay: function ( newDisplay ) {
+  updateCurrentDisplay: function () {
     this.setState({
-      currentDisplay: newDisplay
+      currentDisplay: this.state.currentSub,
+      currentSub: this.state.currentDisplay
     });
   },
 
@@ -63,12 +65,16 @@ var MainApp = React.createClass({
         />
         <MidPanel
           updateMeal={this.updateMeal}
+          updateCurrentDisplay={this.updateCurrentDisplay} 
+          currentDisplay={this.state.currentDisplay}
+          currentSub={this.state.currentSub}
         />
         <BottomPanel
           groceries={this.state.groceries}
           restaurants={this.state.restaurants}
           meals={this.state.meals}    
           average={this.state.average}
+          currentDisplay={this.state.currentDisplay}
         />
       </div>
     );
