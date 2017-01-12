@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20170112010342) do
 
   create_table "meals", force: :cascade do |t|
     t.integer  "week_id"
-    t.string   "type"
+    t.string   "manner"
     t.boolean  "free",       default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
