@@ -40,7 +40,7 @@ var MainApp = React.createClass({
       type: 'PUT',
       success: function(data) {
         this.setState({
-          meals: data.week.meals,
+          meals: data.week.total_meals,
           average: data.week.average
         });
       }.bind(this)
