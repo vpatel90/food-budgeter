@@ -3,7 +3,7 @@ class WeeksController < ApplicationController
   before_action :load_week
 
   def update
-    @week.add_meal
+    @week.add_meal(params[:manner])
     render json: { week: @week }
   end
 

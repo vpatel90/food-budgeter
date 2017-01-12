@@ -20,6 +20,10 @@ var MidPanel = React.createClass({
     this.props.updateCurrentDisplay();
   },
 
+  addMeal: function () {
+    this.props.updateMeal(this.state.currentDisplay)
+  },
+
   renderPanel: function ( func, display ) {
     return (
         <div onClick={func} id={display} className={(display == this.state.currentDisplay ? 'main-btn ' : 'sub-btn ') + display + '-btn btn-large waves-effect waves-light'}>
@@ -31,7 +35,7 @@ var MidPanel = React.createClass({
   render: function() {
     return (
       <div className='row center middle-panel'>
-        {this.renderPanel( this.props.updateMeal, this.state.currentDisplay )}
+        {this.renderPanel( this.addMeal, this.state.currentDisplay )}
         {this.renderPanel( this.swapClasses, this.state.currentSub )}
       </div>
     );

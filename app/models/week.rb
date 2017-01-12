@@ -14,7 +14,8 @@ class Week < ApplicationRecord
     meals.count
   end
 
-  def add_meal(manner, free = false)
+  def add_meal(m, free = false)
+    manner = m == 'groceries' ? 'eat_in' : 'eat_out'
     meals.create(manner: manner, free: free)
   end
 
