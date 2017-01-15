@@ -25,22 +25,15 @@ $(document).on('turbolinks:load', function() {
   $('.modal-trigger').modal('close');
 });
 
-$(document).on('submit', '#login-form', '#signup-form', function(){
-  var $form, $btn;
-
-  $form = $(this);
-  $btn = $form.find('input[type="submit"]');
-  $form.find('.errors').remove();
-
-  $.post({
-    url: this.action,
-    data: $form.serialize()
-  }).error(function(jqXHR, textStatus, errorThrown){
-    $form.prepend('<div class="errors">Invalid email or password</div>');
-    // Unlocks the UI button
-    $btn.prop( "disabled", false );
+$(document).ready(function() {
+    //form id
+    $('#signup-form', '#login-form')
+    .bind('ajax:success', function(evt, data, status, xhr) {
+      //function called on status: 200 (for ex.)
+      console.log('success');
+    })
+    .bind("ajax:error", function(evt, xhr, status, error) {
+      //function called on status: 401 or 500 (for ex.)
+      console.log(xhr.responseText);
+    });
   });
-
-  // prevent default submission
-  return false;
-});
