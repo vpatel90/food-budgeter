@@ -18,9 +18,3 @@
 //= require components
 //= require materialize-sprockets
 //= require_tree .
-$(document).on('turbolinks:load', function() {
-  $(".button-collapse").sideNav();
-  $('.modal').modal();
-  $('.modal-trigger').modal('open');
-  $('.modal-trigger').modal('close');
-});

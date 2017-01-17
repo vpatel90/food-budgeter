@@ -2,7 +2,8 @@
   .modal-content
     h4 Log in
 
-    = form_for User.new, url: user_session_path, method: :POST do |f| 
+    = form_for User.new, url: user_session_path, html: { id: 'login-form' }, remote: true do |f|
+      .errors
       .input-field
         = f.email_field :email, autofocus: true 
         = f.label :email
