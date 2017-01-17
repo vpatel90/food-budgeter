@@ -14,6 +14,14 @@ class Week < ApplicationRecord
     meals.count
   end
 
+  def ate_in_meals
+    meals.ate_in.count
+  end
+
+  def ate_out_meals
+    meals.ate_out.count
+  end
+
   def add_meal(m, free = false)
     manner = m == 'groceries' ? 'eat_in' : 'eat_out'
     meals.create(manner: manner, free: free)
@@ -41,7 +49,7 @@ class Week < ApplicationRecord
   end
 
   def as_json(_ = nil)
-    super(methods: [:average, :total_meals])
+    super(methods: [:average, :total_meals, :ate_in_meals, :ate_out_meals])
   end
 
 end
