@@ -6,12 +6,14 @@ class User < ApplicationRecord
 
   has_many :weeks
 
+  CST = 'Central Time (US & Canada)'
+
   def current_week
-    if weeks.last && Time.now < weeks.last.end
+    if weeks.last && Time.now.in_time_zone(CST) < weeks.last.end
       weeks.last
     else
-      weeks.create(start: Time.now.beginning_of_week,
-                   end: Time.now.end_of_week)
+      weeks.create(start: Time.now.in_time_zone(CST).beginning_of_week,
+                   end: Time.now.in_time_zone(CST).end_of_week)
     end
   end
 
