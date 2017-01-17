@@ -18,22 +18,3 @@
 //= require components
 //= require materialize-sprockets
 //= require_tree .
-$(document).on('turbolinks:load', function() {
-  $(".button-collapse").sideNav();
-  $('.modal').modal();
-  $('.modal-trigger').modal('open');
-  $('.modal-trigger').modal('close');
-});
-
-$(document).ready(function() {
-    //form id
-    $('#signup-form', '#login-form')
-    .bind('ajax:success', function(evt, data, status, xhr) {
-      //function called on status: 200 (for ex.)
-      console.log('success');
-    })
-    .bind("ajax:error", function(evt, xhr, status, error) {
-      //function called on status: 401 or 500 (for ex.)
-      console.log(xhr.responseText);
-    });
-  });

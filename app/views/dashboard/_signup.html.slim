@@ -4,17 +4,17 @@
 
     = form_for User.new, url: user_registration_path, html: { id: 'signup-form' }, remote: true do |f|
       .errors
-        .input-field
-          = f.email_field :email, autofocus: true
-          = f.label :email
+      .input-field
+        = f.email_field :email, autofocus: true
+        = f.label :email
 
-        .input-field
-          = f.password_field :password, autocomplete: "off"
-          = f.label :password
+      .input-field
+        = f.password_field :password, autocomplete: "off"
+        = f.label :password
 
-        .input-field
-          = f.password_field :password_confirmation, autocomplete: "off"
-          = f.label :password_confirmation
+      .input-field
+        = f.password_field :password_confirmation, autocomplete: "off"
+        = f.label :password_confirmation
 
-        .actions
-          = f.submit "Sign up"
+      .actions
+        = f.submit "Sign up"

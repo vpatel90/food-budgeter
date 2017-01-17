@@ -4,13 +4,13 @@
 
     = form_for User.new, url: user_session_path, html: { id: 'login-form' }, remote: true do |f|
       .errors
-        .input-field
-          = f.email_field :email, autofocus: true 
-          = f.label :email
-            
-        .input-field
-          = f.password_field :password, autocomplete: "off"
-          = f.label :password
+      .input-field
+        = f.email_field :email, autofocus: true 
+        = f.label :email, data: { error:'wrong', sucess:'right'}
+          
+      .input-field
+        = f.password_field :password, autocomplete: "off"
+        = f.label :password
 
-        .actions
-          = submit_tag "Log in"
+      .actions
+        = submit_tag "Log in"
