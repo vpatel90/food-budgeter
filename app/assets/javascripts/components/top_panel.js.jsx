@@ -3,7 +3,8 @@ var TopPanel = React.createClass({
   getInitialState: function () {
     return {
       totalSpent: this.props.groceries + this.props.restaurants,
-      meals: this.props.meals,
+      meals: this.props.currentDisplay == 'groceries' ? this.props.ate_in : this.props.ate_out,
+      totalMeals: this.props.totalMeals,
       currentDisplay: this.props.currentDisplay,
       value: ''
     }
@@ -22,7 +23,8 @@ var TopPanel = React.createClass({
   componentWillReceiveProps: function (nextProps) {
     this.setState({
       totalSpent: nextProps.groceries + nextProps.restaurants,
-      meals: nextProps.meals,
+      meals: nextProps.currentDisplay == 'groceries' ? nextProps.ate_in : nextProps.ate_out,
+      totalMeals: nextProps.totalMeals,
       currentDisplay: nextProps.currentDisplay,
       value: ''
     });
@@ -35,14 +37,16 @@ var TopPanel = React.createClass({
           <div className={'col ' + this.state.currentDisplay + '-text'}>
             Total {this.state.currentDisplay}: $ {(this.state.currentDisplay == 'groceries' ? this.props.groceries : this.props.restaurants).toFixed(2)}
           </div>
-
+          <div className={'col right '+ this.state.currentDisplay + '-text text-darken-2'}>
+            {this.state.currentDisplay == 'groceries' ? 'Ate In' : 'Ate Out'}: {this.state.meals}
+          </div>
         </div>
         <div className='row input-field'>
           <div className='col deep-orange-text'>
             Total Spent: $ {this.state.totalSpent.toFixed(2)}
           </div>
           <div className={'col right '+ this.state.currentDisplay + '-text text-darken-2'}>
-            Meals: {this.state.meals}
+            Meals: {this.state.totalMeals}
           </div>
         </div>
         <div>

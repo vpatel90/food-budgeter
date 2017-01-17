@@ -4,9 +4,9 @@ var BottomPanel = React.createClass({
     return {
       average: this.props.average.toFixed(2),
       totalSpent: this.props.groceries + this.props.restaurants,
-      meals: this.props.meals,
+      totalMeals: this.props.totalMeals,
       compareTo: 10.00,
-      hypothetical: 10.00 * this.props.meals,
+      hypothetical: 10.00 * this.props.totalMeals,
       currentDisplay: this.props.currentDisplay
     }
   },
@@ -15,8 +15,8 @@ var BottomPanel = React.createClass({
     this.setState({
       average: nextProps.average.toFixed(2),
       totalSpent: nextProps.groceries + nextProps.restaurants,
-      meals: nextProps.meals,
-      hypothetical: 10.00 * nextProps.meals,
+      totalMeals: nextProps.totalMeals,
+      hypothetical: 10.00 * nextProps.totalMeals,
       currentDisplay: nextProps.currentDisplay
     });
   },
