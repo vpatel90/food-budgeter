@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   resources :weeks,        only: :update
   resources :expenditures, only: :update
   resources :comparisons,  only: [:index]
+  get '/settings' => 'dashboard#settings'
+
+
 end
