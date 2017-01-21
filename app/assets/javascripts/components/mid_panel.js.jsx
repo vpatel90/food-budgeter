@@ -14,6 +14,17 @@ var MidPanel = React.createClass({
     });
   },
 
+  componentDidMount: function () {
+    var that = this;
+    mc = new Hammer(document.getElementById('middle-panel'));
+
+    mc.on("panleft panright", function(e) {
+    if ((e.type === 'panleft' && that.state.currentDisplay === 'groceries')
+       || (e.type === 'panright' && that.state.currentDisplay === 'restaurants'))
+      that.swapClasses();
+    });
+  },
+
   swapClasses: function () {
     $('nav').addClass(this.props.currentSub);
     $('nav').removeClass(this.props.currentDisplay);
@@ -34,7 +45,7 @@ var MidPanel = React.createClass({
 
   render: function() {
     return (
-      <div className='row center middle-panel'>
+      <div className='row center middle-panel' id='middle-panel'>
         {this.renderPanel( this.addMeal, this.state.currentDisplay )}
         {this.renderPanel( this.swapClasses, this.state.currentSub )}
       </div>
