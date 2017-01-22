@@ -10,19 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170122015945) do
+ActiveRecord::Schema.define(version: 20170122224312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "expenditures", force: :cascade do |t|
-    t.integer  "week_id"
-    t.float    "groceries",   default: 0.0
-    t.float    "restaurants", default: 0.0
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.index ["week_id"], name: "index_expenditures_on_week_id", using: :btree
-  end
 
   create_table "expenses", force: :cascade do |t|
     t.integer  "week_id"
@@ -70,7 +61,6 @@ ActiveRecord::Schema.define(version: 20170122015945) do
     t.index ["user_id"], name: "index_weeks_on_user_id", using: :btree
   end
 
-  add_foreign_key "expenditures", "weeks"
   add_foreign_key "expenses", "weeks"
   add_foreign_key "meals", "weeks"
 end
