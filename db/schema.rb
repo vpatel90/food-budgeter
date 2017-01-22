@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170112035222) do
+ActiveRecord::Schema.define(version: 20170122015945) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,12 +24,23 @@ ActiveRecord::Schema.define(version: 20170112035222) do
     t.index ["week_id"], name: "index_expenditures_on_week_id", using: :btree
   end
 
+  create_table "expenses", force: :cascade do |t|
+    t.integer  "week_id"
+    t.string   "manner"
+    t.float    "amount",     default: 0.0
+    t.datetime "spent_at"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["week_id"], name: "index_expenses_on_week_id", using: :btree
+  end
+
   create_table "meals", force: :cascade do |t|
     t.integer  "week_id"
     t.string   "manner"
     t.boolean  "free",       default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.datetime "ate_at"
     t.index ["week_id"], name: "index_meals_on_week_id", using: :btree
   end
 
@@ -60,5 +71,6 @@ ActiveRecord::Schema.define(version: 20170112035222) do
   end
 
   add_foreign_key "expenditures", "weeks"
+  add_foreign_key "expenses", "weeks"
   add_foreign_key "meals", "weeks"
 end
