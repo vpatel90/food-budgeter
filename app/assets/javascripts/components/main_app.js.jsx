@@ -12,7 +12,7 @@ var MainApp = React.createClass({
     }
   },
 
-  updateExpenditure: function (amount, type) {
+  updateExpense: function (amount, type) {
     $.ajax({
       url: '/expenses',
       data: {
@@ -64,7 +64,7 @@ var MainApp = React.createClass({
     return (
       <div>
         <TopPanel 
-          updateExpenditure={this.updateExpenditure} 
+          updateExpense={this.updateExpense} 
           updateCurrentDisplay={this.updateCurrentDisplay} 
           currentDisplay={this.state.currentDisplay} 
           groceries={this.state.groceries}

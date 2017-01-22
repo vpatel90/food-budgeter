@@ -14,17 +14,18 @@ u2 = User.create(email: 'user@example.com', password: 'password')
 w1 = u1.current_week
 w2 = u2.current_week
 
-w1.expenditure.update(groceries: 32.6, restaurants: 22.4)
-w2.expenditure.update(groceries: 43.6, restaurants: 0)
 
 6.times do
   w1.meals.create(manner: 'eat_in')
 end
+w1.expenses.create(manner: 'groceries', amount: 32.5)
 
 2.times do
   w1.meals.create(manner: 'eat_out')
+  w1.expenses.create(manner: 'restaurants', amount: 12.32)
 end
 
 9.times do
   w2.meals.create(manner: 'eat_in')
 end
+w2.expenses.create(manner: 'groceries', amount: 42.5)

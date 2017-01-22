@@ -17,7 +17,7 @@ var TopPanel = React.createClass({
   },
 
   submitForm: function () {
-    this.props.updateExpenditure( this.state.value, this.props.currentDisplay );
+    this.props.updateExpense( this.state.value, this.props.currentDisplay );
   },
 
   componentWillReceiveProps: function (nextProps) {
@@ -51,8 +51,8 @@ var TopPanel = React.createClass({
         </div>
         <div>
           <div className='input-field form-input'>
-            <input onChange={this.updateValue} type='number' step='any' name='expenditure' value={this.state.value} />
-            <label htmlFor='expenditure'>{'Add ' + this.state.currentDisplay + ' spending'} </label>
+            <input onChange={this.updateValue} type='number' step='any' name='expense' value={this.state.value} />
+            <label htmlFor='expense'>{'Add ' + this.state.currentDisplay + ' spending'} </label>
           </div>
           <div className='submit-btn btn deep-orange' onClick={this.submitForm}>
             Add
