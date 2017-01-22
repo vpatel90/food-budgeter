@@ -3,11 +3,20 @@ class Week < ApplicationRecord
   belongs_to :user
   has_one :expenditure
   has_many :meals
+  has_many :expenses
 
   after_create :create_expenditure
 
   def total_expenditure
-    expenditure.groceries + expenditure.restaurants
+    expenses.map(&:amount).sum
+  end
+
+  def groceries_total
+    expenses.groceries.map(&:amount).sum
+  end
+
+  def restaurants_total
+    expenses.restaurants.map(&:amount).sum
   end
 
   def total_meals
@@ -49,7 +58,7 @@ class Week < ApplicationRecord
   end
 
   def as_json(_ = nil)
-    super(methods: [:average, :total_meals, :ate_in_meals, :ate_out_meals])
+    super(methods: [:average, :total_meals, :ate_in_meals, :ate_out_meals, :groceries_total, :restaurants_total])
   end
 
 end
