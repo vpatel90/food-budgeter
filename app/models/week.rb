@@ -5,15 +5,15 @@ class Week < ApplicationRecord
   has_many :expenses
 
   def total_expenditure
-    expenses.map(&:amount).sum
+    expenses.map(&:amount).sum.to_f
   end
 
   def groceries_total
-    expenses.groceries.map(&:amount).sum
+    expenses.groceries.map(&:amount).sum.to_f
   end
 
   def restaurants_total
-    expenses.restaurants.map(&:amount).sum
+    expenses.restaurants.map(&:amount).sum.to_f
   end
 
   def total_meals
