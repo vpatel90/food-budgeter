@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   resources :weeks,        only: :update
   resources :expenses,     only: :create
 
-  resources :comparisons,  only: :index
+  get '/comparisons', to: 'comparisons#index'
   get '/settings', to: 'dashboard#settings'
 end

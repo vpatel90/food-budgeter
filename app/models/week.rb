@@ -4,6 +4,10 @@ class Week < ApplicationRecord
   has_many :meals
   has_many :expenses
 
+  def pretty_time
+    "#{start.strftime('%m/%d')}-#{self.end.strftime('%m/%d')}"
+  end
+
   def total_expenditure
     expenses.map(&:amount).sum.to_f
   end
@@ -55,7 +59,7 @@ class Week < ApplicationRecord
   end
 
   def as_json(_ = nil)
-    super(methods: [:average, :total_meals, :ate_in_meals, :ate_out_meals, :groceries_total, :restaurants_total])
+    super(methods: [:average, :pretty_time, :total_expenditure, :total_meals, :ate_in_meals, :ate_out_meals, :groceries_total, :restaurants_total])
   end
 
 end
