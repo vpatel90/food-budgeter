@@ -1,8 +1,8 @@
 class Week < ApplicationRecord
 
   belongs_to :user
-  has_many :meals
-  has_many :expenses
+  has_many :meals, dependent: :destroy
+  has_many :expenses, dependent: :destroy
 
   def pretty_time
     "#{start.strftime('%m/%d')}-#{self.end.strftime('%m/%d')}"

@@ -6,7 +6,8 @@ var TopPanel = React.createClass({
       meals: this.props.currentDisplay == 'groceries' ? this.props.ate_in : this.props.ate_out,
       totalMeals: this.props.totalMeals,
       currentDisplay: this.props.currentDisplay,
-      value: ''
+      value: '',
+      next_week: false
     }
   },
 
@@ -16,8 +17,14 @@ var TopPanel = React.createClass({
     });
   },
 
+  updateWeek: function (e) {
+    this.setState({
+      next_week: !this.state.next_week
+    });
+  },
+
   submitForm: function () {
-    this.props.updateExpense( this.state.value, this.props.currentDisplay );
+    this.props.updateExpense( this.state.value, this.state.next_week, this.props.currentDisplay );
   },
 
   componentWillReceiveProps: function (nextProps) {
@@ -51,11 +58,23 @@ var TopPanel = React.createClass({
         </div>
         <div>
           <div className='input-field form-input'>
-            <input onChange={this.updateValue} type='number' step='any' name='expense' value={this.state.value} />
-            <label htmlFor='expense'>{'Add ' + this.state.currentDisplay + ' spending'} </label>
+            <input onChange={this.updateValue} type='number' step='any' name='expense' value={this.state.value} placeholder={"Add " + this.state.currentDisplay + " spending"} />
           </div>
           <div className='submit-btn btn deep-orange' onClick={this.submitForm}>
             Add
+          </div>
+        </div>
+        <div>
+          <div className='next-week-check'>
+            <label>
+              <input
+                name="next_week"
+                type="checkbox"
+                checked={this.state.next_week}
+                onChange={this.updateWeek}
+              />
+            Next Week?
+            </label>
           </div>
         </div>
       </div>

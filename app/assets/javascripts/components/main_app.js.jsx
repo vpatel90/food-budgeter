@@ -12,13 +12,14 @@ var MainApp = React.createClass({
     }
   },
 
-  updateExpense: function (amount, type) {
+  updateExpense: function (amount, week, type) {
     $.ajax({
       url: '/expenses',
       data: {
         expenses: {
           amount: amount,
-          type: type
+          type: type,
+          week: week
         }
       },
       type: 'POST',
@@ -50,7 +51,7 @@ var MainApp = React.createClass({
           average: data.week.average
         });
       }.bind(this)
-    });  
+    });
   },
 
   updateCurrentDisplay: function () {
@@ -63,10 +64,10 @@ var MainApp = React.createClass({
   render: function() {
     return (
       <div>
-        <TopPanel 
-          updateExpense={this.updateExpense} 
-          updateCurrentDisplay={this.updateCurrentDisplay} 
-          currentDisplay={this.state.currentDisplay} 
+        <TopPanel
+          updateExpense={this.updateExpense}
+          updateCurrentDisplay={this.updateCurrentDisplay}
+          currentDisplay={this.state.currentDisplay}
           groceries={this.state.groceries}
           restaurants={this.state.restaurants}
           totalMeals={this.state.totalMeals}
@@ -75,14 +76,14 @@ var MainApp = React.createClass({
         />
         <MidPanel
           updateMeal={this.updateMeal}
-          updateCurrentDisplay={this.updateCurrentDisplay} 
+          updateCurrentDisplay={this.updateCurrentDisplay}
           currentDisplay={this.state.currentDisplay}
           currentSub={this.state.currentSub}
         />
         <BottomPanel
           groceries={this.state.groceries}
           restaurants={this.state.restaurants}
-          totalMeals={this.state.totalMeals}    
+          totalMeals={this.state.totalMeals}
           average={this.state.average}
           currentDisplay={this.state.currentDisplay}
         />

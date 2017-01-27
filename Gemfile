@@ -25,6 +25,7 @@ gem 'materialize-sass'
 gem 'font-awesome-sass'
 gem 'react-rails'
 gem 'rails_admin', '~> 1.0'
+gem 'pry-rails'
 
 # vendors
 gem 'devise', '~> 4.2.0'
