@@ -1,0 +1,17 @@
+#graph-main {
+  .ct-chart {
+    position: fixed;
+    top: 25%;
+  }
+
+  .ct-series-a .ct-line, .ct-point {
+    stroke: #4CAF50; 
+  }
+  .y-label {
+    color: gray;
+    transform: rotate(-90deg);
+    position: fixed;
+    top: 43%;
+    left: -5%;
+  }
+}
