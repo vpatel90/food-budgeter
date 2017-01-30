@@ -17,7 +17,7 @@ var TopPanel = React.createClass({
     });
   },
 
-  updateWeek: function (e) {
+  updateWeek: function () {
     this.setState({
       next_week: !this.state.next_week
     });
@@ -26,7 +26,7 @@ var TopPanel = React.createClass({
   submitForm: function () {
     this.props.updateExpense( this.state.value, this.state.next_week, this.props.currentDisplay );
     if (this.state.value && this.state.next_week) {
-      Materialize.toast('Added to Next Week', 2000)
+      Materialize.toast('Added to Next Week', 2000);
     };
   },
 
@@ -36,7 +36,8 @@ var TopPanel = React.createClass({
       meals: nextProps.currentDisplay == 'groceries' ? nextProps.ate_in : nextProps.ate_out,
       totalMeals: nextProps.totalMeals,
       currentDisplay: nextProps.currentDisplay,
-      value: ''
+      value: '',
+      next_week: this.state.value === '' ? this.state.next_week : false
     });
   },
 
@@ -68,11 +69,11 @@ var TopPanel = React.createClass({
           </div>
         </div>
         <div>
-          <div className='next-week-check'>
+          <div className={'next-week-check ' + this.state.currentDisplay + "-check"}>
             <input
-              name="next_week"
               type="checkbox"
               id="next_week"
+              className="next_week"
               checked={this.state.next_week}
               onChange={this.updateWeek}
             />

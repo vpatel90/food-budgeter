@@ -1,3 +1,5 @@
+@import "variables";
+
 .top-panel {
   max-height: 25vh;
   .row { margin-bottom: 0; }
@@ -70,10 +72,19 @@
   }
 }
 
-.next-week-check {
-  margin-bottom: 10px;
-  .check-week { padding-left: 25px; }
+.next-week-check label {
+    padding-left: 25px;
+    margin-bottom: 10px;
 }
+.groceries-check .next_week:checked + label:before {
+  border-right: 2px solid $green;
+  border-bottom: 2px solid $green;
+}
+.restaurants-check .next_week:checked + label:before {
+  border-right: 2px solid $light-blue;
+  border-bottom: 2px solid $light-blue;
+}
+
 
 .bottom-panel {
   max-height: 50vh;
