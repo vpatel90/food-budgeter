@@ -1,15 +1,11 @@
 class ExpensesController < ApplicationController
-
   def create
-    if params[:expenses][:week] == "false"
-      week = current_user.find_week(0.week)
-    else
-      week = current_user.find_week(1.week)
-    end
+    current_week = current_user.find_week(0.week)
+    next_week = current_user.find_week(1.week) if params[:expenses][:week] == "true"
     if params[:expenses][:amount].present?
+      week = next_week || current_week
       week.expenses.create(amount: params[:expenses][:amount], manner: params[:expenses][:type])
     end
-    render json: { week: week }
-    puts "hi there!"
+    render json: { week: current_week }
   end
 end

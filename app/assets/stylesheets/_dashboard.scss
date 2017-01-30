@@ -70,9 +70,9 @@
   }
 }
 
-.next-week-check input[type="checkbox"] {
-  opacity: 1;
-  position: static;
+.next-week-check {
+  margin-bottom: 10px;
+  .check-week { padding-left: 25px; }
 }
 
 .bottom-panel {
@@ -88,3 +88,21 @@
 .restaurants-text { @extend .light-blue-text; }
 
 .groceries-text, .restaurants-text { transition: all 0.5s, ease; }
+
+#toast-container {
+  top: 34.5vh;
+  left: 65vw;
+  height: 0;
+  min-width: 50px;
+  margin: 0 0 0 5vw;
+  .toast {
+    background: none;
+    color: red;
+    box-shadow: none;
+    height: 55px;
+    min-height: 0px;
+    font-size: smaller;
+    padding: 0;
+    margin: -40px 0;
+  }
+}

@@ -18,4 +18,3 @@
 //= require components
 //= require materialize-sprockets
 //= require_tree .
-
