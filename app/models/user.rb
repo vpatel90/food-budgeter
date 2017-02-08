@@ -8,15 +8,9 @@ class User < ApplicationRecord
 
   CST = 'Central Time (US & Canada)'
 
-  def find_week(week)
-    week_cst_time_zone = (Time.now + week).in_time_zone(CST)
-
-    if week_exists = weeks.find_by(end: week_cst_time_zone.end_of_week)
-      week_exists
-    else
-      weeks.create(start: week_cst_time_zone.beginning_of_week,
-                   end:   week_cst_time_zone.end_of_week)
-    end
+  def find_week(next_week = false)
+    week_end_time = Time.now.in_time_zone(CST).end_of_week
+    week_end_time = week_end_time + 1.week if next_week
+    weeks.where(end: week_end_time).first_or_create(start: week_end_time.beginning_of_week)
   end
-
 end

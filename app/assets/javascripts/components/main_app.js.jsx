@@ -12,14 +12,14 @@ var MainApp = React.createClass({
     }
   },
 
-  updateExpense: function (amount, week, type) {
+  updateExpense: function (amount, next_week, type) {
     $.ajax({
       url: '/expenses',
       data: {
         expenses: {
           amount: amount,
-          type: type,
-          week: week
+          manner: type,
+          next_week: next_week
         }
       },
       type: 'POST',

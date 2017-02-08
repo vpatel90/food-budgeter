@@ -1,5 +1,3 @@
-@import "variables";
-
 .top-panel {
   max-height: 25vh;
   .row { margin-bottom: 0; }
@@ -76,11 +74,11 @@
     padding-left: 25px;
     margin-bottom: 10px;
 }
-.groceries-check .next_week:checked + label:before {
+.groceries-check .next-week:checked + label:before {
   border-right: 2px solid $green;
   border-bottom: 2px solid $green;
 }
-.restaurants-check .next_week:checked + label:before {
+.restaurants-check .next-week:checked + label:before {
   border-right: 2px solid $light-blue;
   border-bottom: 2px solid $light-blue;
 }
@@ -111,9 +109,11 @@
     color: red;
     box-shadow: none;
     height: 55px;
+    width: 90%;
     min-height: 0px;
     font-size: smaller;
     padding: 0;
     margin: -40px 0;
+    word-break: break-word;
   }
 }
