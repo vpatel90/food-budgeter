@@ -11,8 +11,8 @@ u1 = User.create(email: 'admin@example.com', password: 'password')
 u2 = User.create(email: 'user@example.com', password: 'password')
 
 
-w1 = u1.current_week
-w2 = u2.current_week
+w1 = u1.find_week
+w2 = u2.find_week
 
 
 6.times do
