@@ -1,4 +1,4 @@
-.modal-content {
+.signup-login {
   .errors {
     @extend .deep-orange-text;
   }
@@ -10,4 +10,10 @@
     border-bottom: 1px solid;
     box-shadow: 0 1px 0 0;
   }
+}
+
+.link {
+  display: inline-block;
+  cursor: pointer;
+  margin-top: 0.7rem;
 }

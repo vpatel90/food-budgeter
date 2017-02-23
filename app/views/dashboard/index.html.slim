@@ -4,12 +4,6 @@
     week: @week
     
 - else
-  .main-btns
-    .row.center
-      = link_to ' Login ', new_user_session_path, data: {target: "login-modal"}, class: 'btn green modal-trigger' 
-      
-    .row.center
-      = link_to 'Sign Up', new_user_registration_path, data: {target: "signup-modal"},  class: 'btn green modal-trigger'
-      
-      = render 'login'
-      = render 'signup'      
+  .signup-login
+    = react_component \
+      'SignupLogin'
