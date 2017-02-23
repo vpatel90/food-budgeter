@@ -6,7 +6,8 @@ var TopPanel = React.createClass({
       meals: this.props.currentDisplay == 'groceries' ? this.props.ate_in : this.props.ate_out,
       totalMeals: this.props.totalMeals,
       currentDisplay: this.props.currentDisplay,
-      value: ''
+      value: '',
+      next_week: false
     }
   },
 
@@ -16,8 +17,17 @@ var TopPanel = React.createClass({
     });
   },
 
+  updateWeek: function () {
+    this.setState({
+      next_week: !this.state.next_week
+    });
+  },
+
   submitForm: function () {
-    this.props.updateExpense( this.state.value, this.props.currentDisplay );
+    this.props.updateExpense( this.state.value, this.state.next_week, this.props.currentDisplay );
+    if (this.state.value && this.state.next_week) {
+      Materialize.toast('$' + this.state.value + ' Added to Next Week', 2000);
+    };
   },
 
   componentWillReceiveProps: function (nextProps) {
@@ -26,7 +36,8 @@ var TopPanel = React.createClass({
       meals: nextProps.currentDisplay == 'groceries' ? nextProps.ate_in : nextProps.ate_out,
       totalMeals: nextProps.totalMeals,
       currentDisplay: nextProps.currentDisplay,
-      value: ''
+      value: '',
+      next_week: this.state.value === '' ? this.state.next_week : false
     });
   },
 
@@ -51,11 +62,16 @@ var TopPanel = React.createClass({
         </div>
         <div>
           <div className='input-field form-input'>
-            <input onChange={this.updateValue} type='number' step='any' name='expense' value={this.state.value} />
-            <label htmlFor='expense'>{'Add ' + this.state.currentDisplay + ' spending'} </label>
+            <input onChange={this.updateValue} type='number' step='any' name='expense' value={this.state.value} placeholder={"Add " + this.state.currentDisplay + " spending"} />
           </div>
-          <div className='submit-btn btn deep-orange' onClick={this.submitForm}>
+          <div className='submit-btn btn deep-orange' onClick={this.submitForm} >
             Add
+          </div>
+        </div>
+        <div>
+          <div className={'next-week-check ' + this.state.currentDisplay + "-check"}>
+            <input type="checkbox" id="next-week" className="next-week" checked={this.state.next_week} onChange={this.updateWeek} />
+            <label className="check-week" htmlFor="next-week">Next Week?</label>
           </div>
         </div>
       </div>

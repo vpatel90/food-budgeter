@@ -1,5 +1,5 @@
 class WeeksController < ApplicationController
-  
+
   before_action :load_week
 
   def update
